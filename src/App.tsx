@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Header from './components/Header/Header';
-import Map from './components/Map/Map';
+import Mapbox from './components/Mapbox/Mapbox';
 import ContactsList from './components/ContactsList/ContactsList';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <Header></Header>
 
       <div className='m-4 flex'>
-        <Map></Map>
+        <Mapbox></Mapbox>
         <ContactsList></ContactsList>
       </div>
     </div>
