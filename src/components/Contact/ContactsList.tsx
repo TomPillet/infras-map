@@ -27,7 +27,7 @@ const ContactsList: FC<ContactsListProps> = ({list, onClick, onAddButtonTriggere
                 {
                   list.map((contact: Contact) => {
                     return (
-                      <li key={contact.id}>
+                      <li key={contact.key}>
                         <button
                           onClick={() => onClick(contact)}
                         >{contact.name}</button>

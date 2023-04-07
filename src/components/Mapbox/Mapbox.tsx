@@ -15,10 +15,6 @@ const Mapbox: FC<MapboxProps> = ({contacts, onMarkerClick, onAddMarkerClick}) =>
     height: '45vh',
   }
 
-  const handleClick = (e: any) => {
-    console.log(e.lngLat);
-  }
-
   return (
     <div className='border-black border-4 w-9/12' style={mapContainerStyle}>
         <InteractiveMap
@@ -38,7 +34,7 @@ const Mapbox: FC<MapboxProps> = ({contacts, onMarkerClick, onAddMarkerClick}) =>
           {contacts.map((contact) => {
             return (
               <Marker
-                key={contact.id}
+                key={contact.key}
                 latitude={contact.latitude}
                 longitude={contact.longitude}
                 anchor='bottom'

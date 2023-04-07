@@ -11,10 +11,11 @@ import ContactDetailsForm from './components/Contact/ContactDetailsForm';
 
 function App() {
   const entNull: Contact = {
-    id: 0, name: '', desc: '', latitude: 0, longitude: 0
+    id: 0, key: 'default0', name: '', desc: '', latitude: 0, longitude: 0
   }
   const ent1: Contact = {
     id: 1,
+    key: 'default1',
     name: "Entreprise 1",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed augue tempus, dictum lacus id, fermentum sem.",
     latitude: 47.24012,
@@ -22,6 +23,7 @@ function App() {
   }
   const ent2: Contact = {
     id: 2,
+    key: 'default2',
     name: "Entreprise 2",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed augue tempus, dictum lacus id, fermentum sem.",
     latitude: 47.23854,
@@ -38,14 +40,16 @@ function App() {
       setCurrentContact(contact);
       // Si le name de contact contient des caractères, alors il n'est par défaut pas éditable
       setIsEditable(!(contact.name.length>0));
-      console.log(currentContact);
     }
   }
 
   const toggleContactAddForm = (e: any) => {
-    const contactId = e.lngLat.lat+e.lngLat.lng;
+    const contactId = contacts[contacts.length-1].id+1;
+    const contactKey = (e.lngLat.lat+e.lngLat.lng != 0) ? e.lngLat.lat+'-'+e.lngLat.lng : contactId+'';
+
     const newContact: Contact = {
-      id: (contactId != 0) ? contactId : contacts[contacts.length-1].id+1,
+      id: contactId,
+      key: contactKey,
       name: '',
       desc: '',
       latitude: e.lngLat.lat,

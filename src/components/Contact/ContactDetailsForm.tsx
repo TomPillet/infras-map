@@ -18,15 +18,15 @@ const ContactDetailsForm: FC<ContactDetailsFormProps> = ({contact, containerId, 
       ></CloseButton>
       <h2 className="text-xl my-2 text-center">Ajouter une entreprise</h2>
       <label className="text-start" htmlFor="nom">Nom :</label>
-      <input key={contact.id+'-name'} className={"mb-4 " + (isEditable ? defaultInputStyle : '')} name="nom" defaultValue={contact.name} type="text" disabled={!isEditable} />
+      <input key={contact.key+'-name'} className={"mb-4 " + (isEditable ? defaultInputStyle : '')} name="nom" defaultValue={contact.name} type="text" disabled={!isEditable} />
       <label className="text-start" htmlFor="desc">Description :</label>
-      <input key={contact.id+'-desc'} className={"mb-4 " + (isEditable ? defaultInputStyle : '')} name="desc" defaultValue={contact.desc} type="text" disabled={!isEditable} />
+      <input key={contact.key+'-desc'} className={"mb-4 " + (isEditable ? defaultInputStyle : '')} name="desc" defaultValue={contact.desc} type="text" disabled={!isEditable} />
 
       <div className="flex flex-row justify-between">
         <label htmlFor="lat" className="text-start">Latitude : </label>
-        <input key={contact.id+'-lat'} type="number" className={"w-1/4 " + (isEditable ? defaultInputStyle : '')} name="lat" defaultValue={contact.latitude} disabled={!isEditable} />
+        <input key={contact.key+'-lat'} type="number" className={"w-1/4 " + (isEditable ? defaultInputStyle : '')} name="lat" defaultValue={contact.latitude} disabled={!isEditable} />
         <label htmlFor="lng" className="text-start">Longitude : </label>
-        <input key={contact.id+'-lng'} type="number" className={"w-1/4 " + (isEditable ? defaultInputStyle : '')} name="lng" defaultValue={contact.longitude} disabled={!isEditable} />
+        <input key={contact.key+'-lng'} type="number" className={"w-1/4 " + (isEditable ? defaultInputStyle : '')} name="lng" defaultValue={contact.longitude} disabled={!isEditable} />
       </div>
     </form>
   );
