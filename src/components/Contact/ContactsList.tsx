@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
 
-import AddContactTrigger from './AddContact/AddContactTrigger';
+import AddContactTrigger from './AddContactTrigger';
 import Contact from './Contact';
 
 type ContactsListProps = {
   list: Contact[],
   onClick: any,
+  onAddButtonTriggered: any,
 }
 
-const ContactsList: FC<ContactsListProps> = ({list, onClick}) => {
+const ContactsList: FC<ContactsListProps> = ({list, onClick, onAddButtonTriggered}) => {
 
 
   return (
@@ -40,7 +41,7 @@ const ContactsList: FC<ContactsListProps> = ({list, onClick}) => {
         </tbody>
       </table>
 
-      <AddContactTrigger></AddContactTrigger>
+      <AddContactTrigger handleAddTriggered={() => {onAddButtonTriggered()}}></AddContactTrigger>
     </div>
   );
 }

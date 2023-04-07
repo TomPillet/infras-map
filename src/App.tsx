@@ -7,10 +7,11 @@ import ContactsList from './components/Contact/ContactsList';
 import CloseButton from './components/CloseButton/CloseButton';
 
 import Contact from './components/Contact/Contact';
+import ContactDetailsForm from './components/Contact/ContactDetailsForm';
 
 function App() {
   const entNull: Contact = {
-    id: null, name: '', desc: '', latitude: 0, longitude: 0
+    id: 0, name: '', desc: '', latitude: 0, longitude: 0
   }
   const ent1: Contact = {
     id: 1,
@@ -29,10 +30,28 @@ function App() {
 
   const [currentContact, setCurrentContact] = useState(entNull)
   const [contacts, setContacts] = useState([ent1, ent2]);
+  const [isEditable, setIsEditable] = useState(false);
 
-  const toggleContactDetails = (contact: Contact) => {
-    setCurrentContact(contact);
+  const toggleContactDetails = (contact?: Contact) => {
     document.getElementById("contactDetails")!.classList.remove("hidden");
+    if (contact) {
+      setCurrentContact(contact);
+      // Si le name de contact contient des caractères, alors il n'est par défaut pas éditable
+      setIsEditable(!(contact.name.length>0));
+      console.log(currentContact);
+    }
+  }
+
+  const toggleContactAddForm = (e: any) => {
+    const contactId = e.lngLat.lat+e.lngLat.lng;
+    const newContact: Contact = {
+      id: (contactId != 0) ? contactId : contacts[contacts.length-1].id+1,
+      name: '',
+      desc: '',
+      latitude: e.lngLat.lat,
+      longitude: e.lngLat.lng
+    };
+    toggleContactDetails(newContact);
   }
 
   return (
@@ -42,21 +61,25 @@ function App() {
       <div className='m-4 flex'>
         <Mapbox
           contacts={contacts}
-          onClick={(contact: Contact) => {toggleContactDetails(contact)}}
+          onMarkerClick={(contact: Contact) => {toggleContactDetails(contact)}}
+          onAddMarkerClick={(e: any) => toggleContactAddForm(e)}
         ></Mapbox>
 
         <ContactsList
           list={contacts}
           onClick={(contact: Contact) => {toggleContactDetails(contact)}}
+          onAddButtonTriggered={() => {toggleContactAddForm({lngLat: {lat: 0, lng: 0}})}}
         ></ContactsList>
       </div>
 
       <div id="contactDetails" className='hidden absolute z-10 bg-white h-fit w-3/5 inset-0 mx-auto top-32 shadow-lg rounded'>
-        { currentContact.id != null ? (
-            <div className='px-8 py-4 flex flex-col'>
-              <CloseButton targetId="contactDetails"></CloseButton>
-              <h2 className="text-xl font-extrabold my-2 text-center">{currentContact.name}</h2>
-              <p className='my-2'>{currentContact.desc}</p>
+        { currentContact.id != 0 ? (
+            <div>
+              <ContactDetailsForm
+                contact={currentContact}
+                containerId='contactDetails'
+                isEditable={isEditable}
+              ></ContactDetailsForm>
             </div>
           ) : null
         }
