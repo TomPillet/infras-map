@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface Contact {
-    id: number,
+    id: number | null,
     name: string,
     desc: string,
     latitude: number,

@@ -8,6 +8,9 @@ import ContactsList from './components/Contact/ContactsList';
 import Contact from './components/Contact/Contact';
 
 function App() {
+  const entNull: Contact = {
+    id: null, name: '', desc: '', latitude: 0, longitude: 0
+  }
   const ent1: Contact = {
     id: 1,
     name: "Entreprise 1",
@@ -23,7 +26,7 @@ function App() {
     longitude: 6.02456,
   }
 
-  const [currentDetails, setCurrentDetails] = useState('')
+  const [currentContact, setCurrentContact] = useState(entNull)
   const [contacts, setContacts] = useState([ent1, ent2]);
 
   return (
@@ -35,14 +38,24 @@ function App() {
         <ContactsList
           list={contacts}
           onClick={(contact: Contact) => {
-            setCurrentDetails(contact.desc);
+            setCurrentContact(contact);
             toggleDetailsContainer();
           }}
         ></ContactsList>
       </div>
 
-      <div id="contactDetails" className='hidden absolute z-10 bg-white h-fit w-3/5 inset-0 mx-auto top-32 shadow-md'>
-        { currentDetails.length > 0 ? <div>{currentDetails}</div> : <div></div>}
+      <div id="contactDetails" className='hidden absolute z-10 bg-white h-fit w-3/5 inset-0 mx-auto top-32 shadow-lg rounded'>
+        { currentContact.id != null ? (
+            <div className='px-8 py-4 flex flex-col'>
+              <button 
+                className='absolute top-0 right-0 h-fit text-start m-1 px-2 font-bold'
+                onClick={() => toggleDetailsContainer()}  
+              >X</button>
+              <h2 className="text-xl font-extrabold my-2 text-center">{currentContact.name}</h2>
+              <p className='my-2'>{currentContact.desc}</p>
+            </div>
+          ) : null
+        }
       </div>
     </div>
   );
