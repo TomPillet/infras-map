@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import AddContactForm from '../AddContactForm/AddContactForm';
+import AddContactForm from './AddContactForm';
 
 interface AddContactTriggerProps {}
 
