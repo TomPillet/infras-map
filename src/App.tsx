@@ -35,7 +35,13 @@ function App() {
       <Header></Header>
 
       <div className='m-4 flex'>
-        <Mapbox></Mapbox>
+        <Mapbox
+          contacts={contacts}
+          onClick={(contact: Contact) => {
+            setCurrentContact(contact);
+            document.getElementById("contactDetails")!.classList.remove("hidden");
+          }}
+        ></Mapbox>
         <ContactsList
           list={contacts}
           onClick={(contact: Contact) => {
