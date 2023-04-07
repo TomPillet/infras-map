@@ -30,6 +30,11 @@ function App() {
   const [currentContact, setCurrentContact] = useState(entNull)
   const [contacts, setContacts] = useState([ent1, ent2]);
 
+  const toggleContactDetails = (contact: Contact) => {
+    setCurrentContact(contact);
+    document.getElementById("contactDetails")!.classList.remove("hidden");
+  }
+
   return (
     <div className="App">
       <Header></Header>
@@ -37,17 +42,12 @@ function App() {
       <div className='m-4 flex'>
         <Mapbox
           contacts={contacts}
-          onClick={(contact: Contact) => {
-            setCurrentContact(contact);
-            document.getElementById("contactDetails")!.classList.remove("hidden");
-          }}
+          onClick={(contact: Contact) => {toggleContactDetails(contact)}}
         ></Mapbox>
+
         <ContactsList
           list={contacts}
-          onClick={(contact: Contact) => {
-            setCurrentContact(contact);
-            document.getElementById("contactDetails")!.classList.remove("hidden");
-          }}
+          onClick={(contact: Contact) => {toggleContactDetails(contact)}}
         ></ContactsList>
       </div>
 
