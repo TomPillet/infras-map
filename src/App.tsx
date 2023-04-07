@@ -58,6 +58,13 @@ function App() {
     toggleContactDetails(newContact);
   }
 
+  const addContact = (newContact: Contact) => {
+    const clonedContacts: Contact[] = [];
+    contacts.forEach(contact => clonedContacts.push(Object.assign({}, contact)));
+    clonedContacts.push(newContact);
+    setContacts(clonedContacts);
+  }
+
   return (
     <div className="App">
       <Header></Header>
@@ -83,7 +90,7 @@ function App() {
                 contact={currentContact}
                 containerId='contactDetails'
                 isEditable={isEditable}
-                handleSave={(contact: Contact) => console.log(contact)}
+                handleSave={(contact: Contact) => addContact(contact)}
               ></ContactDetailsForm>
             </div>
           ) : null
