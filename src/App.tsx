@@ -83,6 +83,7 @@ function App() {
                 contact={currentContact}
                 containerId='contactDetails'
                 isEditable={isEditable}
+                handleSave={(contact: Contact) => console.log(contact)}
               ></ContactDetailsForm>
             </div>
           ) : null
