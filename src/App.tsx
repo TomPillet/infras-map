@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Mapbox from './components/Mapbox/Mapbox';
 import ContactsList from './components/Contact/ContactsList';
+import CloseButton from './components/CloseButton/CloseButton';
 
 import Contact from './components/Contact/Contact';
 
@@ -39,7 +40,7 @@ function App() {
           list={contacts}
           onClick={(contact: Contact) => {
             setCurrentContact(contact);
-            toggleDetailsContainer();
+            document.getElementById("contactDetails")!.classList.remove("hidden");
           }}
         ></ContactsList>
       </div>
@@ -47,10 +48,7 @@ function App() {
       <div id="contactDetails" className='hidden absolute z-10 bg-white h-fit w-3/5 inset-0 mx-auto top-32 shadow-lg rounded'>
         { currentContact.id != null ? (
             <div className='px-8 py-4 flex flex-col'>
-              <button 
-                className='absolute top-0 right-0 h-fit text-start m-1 px-2 font-bold'
-                onClick={() => toggleDetailsContainer()}  
-              >X</button>
+              <CloseButton targetId="contactDetails"></CloseButton>
               <h2 className="text-xl font-extrabold my-2 text-center">{currentContact.name}</h2>
               <p className='my-2'>{currentContact.desc}</p>
             </div>
@@ -59,16 +57,6 @@ function App() {
       </div>
     </div>
   );
-}
-
-function toggleDetailsContainer() {
-  const contactDetails = document.getElementById("contactDetails")!;
-
-  if (contactDetails.classList.contains("hidden")) {
-    contactDetails.classList.remove("hidden");
-  } else {
-    contactDetails.classList.add("hidden");
-  }
 }
 
 export default App;
