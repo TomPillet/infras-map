@@ -34,6 +34,12 @@ function App() {
   const [contacts, setContacts] = useState([ent1, ent2]);
   const [isEditable, setIsEditable] = useState(false);
 
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('contactsList')!) != null) {
+      setContacts(JSON.parse(localStorage.getItem('contactsList')!));
+    }
+  }, [])
+
   const toggleContactDetails = (contact?: Contact) => {
     document.getElementById("contactDetails")!.classList.remove("hidden");
     if (contact) {
@@ -63,6 +69,7 @@ function App() {
     contacts.forEach(contact => clonedContacts.push(Object.assign({}, contact)));
     clonedContacts.push(newContact);
     setContacts(clonedContacts);
+    localStorage.setItem('contactsList', JSON.stringify(clonedContacts));
   }
 
   return (
