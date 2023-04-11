@@ -18,7 +18,7 @@ Sur la carte, dans le coin haut-droit, se trouve un petit bouton ressemblant à 
 
 ![image](https://user-images.githubusercontent.com/76454484/231143632-0d16af87-a471-4abd-b42a-6ebcf732c834.png)
 
-Cliquez dessus pour déplacer la vue sur la position gps renvoyée par votre navigateur (ne vous étonnez pas de vous retrouver ailleurs que vous n'êtes réellement si vous utilisez un VPN ;) ).
+Cliquez dessus pour déplacer la vue sur la position gps renvoyée par votre navigateur (ne vous étonnez pas de vous retrouver ailleurs que vous n'êtes réellement si vous utilisez un VPN).
 
 ### Ajouter une entreprise
 Pour ajouter une entreprise, vous pouvez cliquer sur la carte afin de pointer directement l'emplacement de cette première. Vous verrez que les champs ```latitude``` et ```longitude``` sont remplis automatiquement, en fonction d'où vous avez cliqué. Ajoutez ensuite un nom dans le formulaire (obligatoire) et même une description si vous le souhaitez. Cliquez sur enregistrer et voilà.
