@@ -50,6 +50,9 @@ function App() {
   }
 
   const toggleContactAddForm = (e: any) => {
+    if (e.originalEvent.originalTarget.tagName.toLowerCase() != "canvas") {
+      return;
+    }
     const contactId = contacts[contacts.length-1].id+1;
     const contactKey = (e.lngLat.lat+e.lngLat.lng != 0) ? e.lngLat.lat+'-'+e.lngLat.lng : contactId+'';
 
