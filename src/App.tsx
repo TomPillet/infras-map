@@ -35,7 +35,9 @@ function App() {
   const [isEditable, setIsEditable] = useState(false);
 
   useEffect(() => {
-    setContacts(JSON.parse(localStorage.getItem('contactsList')!));
+    if (JSON.parse(localStorage.getItem('contactsList')!) != null) {
+      setContacts(JSON.parse(localStorage.getItem('contactsList')!));
+    }
   }, [])
 
   const toggleContactDetails = (contact?: Contact) => {
