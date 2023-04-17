@@ -50,7 +50,8 @@ function App() {
   }
 
   const toggleContactAddForm = (e: any) => {
-    if (e.originalEvent.originalTarget.tagName.toLowerCase() != "canvas") {
+    if (e.originalEvent.target.tagName.toLowerCase() != "canvas") {
+      // Clic sur autre chose qu'un point vide de la map, soit un marker
       return;
     }
     const contactId = contacts[contacts.length-1].id+1;
