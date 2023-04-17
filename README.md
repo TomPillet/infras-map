@@ -9,7 +9,7 @@ Réalisé en 3 jours dans le but d'en apprendre plus sur le framework rapidement
 ## Explications
 
 ### Installation et lancement
-Pour utiliser Infras-map, rien de plus simple. Clonez d'abord le repo sur votre machine, et dans le répertoire du projet (là où se trouvent des fichiers comme package.json, etc.), exécutez la commande ```npm run start```.
+Pour utiliser Infras-map, rien de plus simple. Clonez d'abord le repo sur votre machine, et dans le répertoire du projet (là où se trouvent des fichiers comme package.json, etc.), exécutez les commandes ```npm install```, puis ```npm run start```.
 
 Une fois sur l'application (qui a du s'ouvrir automatiquement à l'adresse ```localhost:3000```), vous y verrez une carte et une liste à la droite de celle-ci. Deux entreprises y sont par défaut ajoutées.
 
