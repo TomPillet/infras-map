@@ -50,9 +50,12 @@ function App() {
   }
 
   const toggleContactAddForm = (e: any) => {
-    if (e.originalEvent.target.tagName.toLowerCase() != "canvas") {
-      // Clic sur autre chose qu'un point vide de la map, soit un marker
-      return;
+    if (e.originalEvent) {
+      // Si originalEvent n'existe pas, c'est que le click a été envoyé par le AddContactTrigger
+      if (e.originalEvent.target.tagName.toLowerCase() != "canvas") {
+        // Clic sur autre chose qu'un point vide de la map, soit un marker
+        return;
+      }
     }
     const contactId = contacts[contacts.length-1].id+1;
     const contactKey = (e.lngLat.lat+e.lngLat.lng != 0) ? e.lngLat.lat+'-'+e.lngLat.lng : contactId+'';
